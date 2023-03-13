@@ -75,7 +75,7 @@ const uncompress = (s) => {
 
 const uncompress_post = (s) =>{
     const numbers ='0123456789'
-    let result = ''
+    let result = []
     let pointerStart = 0
     let pointerEnd = 0
 
@@ -86,13 +86,13 @@ const uncompress_post = (s) =>{
         else{
             const num = Number(s.slice(pointerStart, pointerEnd))
             for(let count = 0; count < num; count++){
-                result += s[pointerEnd]
+                result.push(s[pointerEnd])
             }
             pointerEnd += 1
             pointerStart = pointerEnd
         }
     }
-    return result
+    return result.join('')
 }
 
 console.log(uncompress("2c3a1t")); // -> 'ccaaat');
