@@ -24,7 +24,7 @@ const compress = (s) => {
     let currentChar = s[0]
     let res = []
 
-    for(let i = 0 ; i < s.length; i++){
+    for(let i = 0 ; i <= s.length; i++){
       // console.log(s[i])
       if(currentChar === s[i]){
         counter += 1
@@ -42,12 +42,43 @@ const compress = (s) => {
       }
     }
 
-    if(counter === 1){
-      res.push(currentChar)
-    }
-    else{
-      res.push(`${counter}${currentChar}`)
-    }
+    // if(counter === 1){
+    //   res.push(currentChar)
+    // }
+    // else{
+    //   res.push(`${counter}${currentChar}`)
+    // }
     // console.log(res.join(''))
     return res.join('')
   };
+
+  //! post solve walkthrough solution
+
+  const compress_post = (s) => {
+    let result = [];
+    let i = 0;
+    let j = 0;
+
+    while (j <= s.length) {
+      if (s[i] === s[j]) {
+        j += 1;
+      } else {
+        const num = j - i;
+        if (num === 1) {
+          result.push(s[i]);
+        } else {
+          result.push(String(num), s[i]);
+        }
+        i = j;
+      }
+    }
+
+    return result.join('');
+  };
+
+
+
+console.log(compress('ccaaatsss'))
+console.log(compress('ssssbbz'))
+console.log(compress('ppoppppp'))
+console.log(compress('nnneeeeeeeeeeeezz'))
